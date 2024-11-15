@@ -1,0 +1,25 @@
+% Facts
+teaches(mr_smith, math101).
+teaches(ms_jones, sci102).
+teaches(mrs_clark, eng103).
+
+studies(alex, math101).
+studies(sam, sci102).
+studies(lisa, eng103).
+studies(alex, sci102).  % Alex is also studying science
+
+subject(math101, 'Mathematics').
+subject(sci102, 'Science').
+subject(eng103, 'English').
+
+% Rules
+
+% Find the teacher of a student
+teacher_of(Student, Teacher) :-
+    studies(Student, SubjectCode),
+    teaches(Teacher, SubjectCode).
+
+% Find the subject a student is studying by name
+subject_of(Student, SubjectName) :-
+    studies(Student, SubjectCode),
+    subject(SubjectCode, SubjectName).

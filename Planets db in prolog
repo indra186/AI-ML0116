@@ -1,0 +1,26 @@
+% Facts
+planet(mercury, 57.9, 4879, 0.38, no).
+planet(venus, 108.2, 12104, 0.91, no).
+planet(earth, 149.6, 12756, 1.0, no).
+planet(mars, 227.9, 6792, 0.38, no).
+planet(jupiter, 778.5, 142984, 2.34, yes).
+planet(saturn, 1434.0, 120536, 0.93, yes).
+planet(uranus, 2871.0, 51118, 0.92, yes).
+planet(neptune, 4497.1, 49528, 1.12, yes).
+
+% Rules
+
+% Check if a planet has rings
+has_rings(Planet) :-
+    planet(Planet, _, _, _, yes).
+
+% Compare the diameter of two planets
+larger_than(Planet1, Planet2) :-
+    planet(Planet1, _, Diameter1, _, _),
+    planet(Planet2, _, Diameter2, _, _),
+    Diameter1 > Diameter2.
+
+% Find planets closer to the Sun than a given distance
+closer_than(Planet, Distance) :-
+    planet(Planet, DistanceFromSun, _, _, _),
+    DistanceFromSun =< Distance.
